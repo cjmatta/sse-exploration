@@ -1,0 +1,29 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.0.6'
+	id 'io.spring.dependency-management' version '1.1.0'
+}
+
+group = 'com.github.cjmatta'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
+
+repositories {
+	// Add the Confluent Maven repository
+	maven {
+		url 'https://packages.confluent.io/maven/'
+	}
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-webflux:3.0.4'
+	implementation 'org.springframework.boot:spring-boot-starter-logging'
+	implementation 'io.confluent.ksql:ksqldb-api-client:7.3.3'
+	implementation 'org.apache.kafka:kafka-streams:3.3.2'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
